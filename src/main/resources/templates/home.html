@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+
+    <style>
+        body{
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        a{
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome!</h1>
+
+    <h2>Today's date is <span th:text="${date}"></span></h2>
+
+    <a href="books">Show list of books</a>
+    <a href="recommended">Show recommended books</a>
+    <a href="genre">Show books by genre</a>
+</body>
+</html>

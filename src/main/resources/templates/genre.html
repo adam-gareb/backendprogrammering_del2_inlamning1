@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre</title>
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+        }
+
+        h1,
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p th:if="${genre == null}">Please choose what type of genre you would like to see</p>
+
+    <form th:action="@{/genre}" method="get">
+        <label for="type">Genre:</label>
+        <select name="type" id="type">
+            <option th:each="g : ${genres}" th:value="${g}" th:text="${g}" th:selected="${g == genre}">Genre</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    <br>
+
+    <div th:if="${genre != null}">
+
+        <h1 th:text="${genre}">Genre</h1>
+
+        <ul>
+            <li th:each="book : ${books}">
+                <b><span th:text="${book.title}"></span></b> by
+                <b><span th:text="${book.author}"></span></b>
+            </li>
+        </ul>
+
+        <p th:if="${#lists.isEmpty(books)}">No books found in this genre.</p>
+    </div>
+
+    <a th:href="@{/home}">&lt;&lt; Go back</a>
+</body>
+
+</html>
